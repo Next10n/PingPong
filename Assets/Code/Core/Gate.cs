@@ -1,6 +1,6 @@
-using System;
 using Code.Infrastructure.StateMachine;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Core
 {
@@ -8,14 +8,15 @@ namespace Code.Core
     {
         private IGameStateMachine _gameStateMachine;
 
+        [Inject]
         private void Construct(IGameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
         }
         
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            _gameStateMachine.Enter<StartGameState>();
+            _gameStateMachine.Enter<RespawnBallState>();
         }
     }
 }

@@ -1,35 +1,29 @@
-﻿using Code.Core;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.Infrastructure.StateMachine
 {
     public class StartGameState : IState
     {
-        private readonly IAssetProvider _assetProvider;
+        private readonly IBallFactory _ballFactory;
 
-        public StartGameState(IAssetProvider assetProvider) =>
-            _assetProvider = assetProvider;
+        public StartGameState(IBallFactory ballFactory) =>
+            _ballFactory = ballFactory;
 
 
         public void Enter()
         {
-            Ball ball = SpawnBall();
-            ForceBall(ball);
+            SpawnBall();
+            ForceBall();
         }
-        
+
         public void Exit()
         {
         }
 
-        private Ball SpawnBall()
-        {
-            Ball ball = _assetProvider.Load<Ball>("Ball");
-            return Object.Instantiate(ball);
-        }
+        private void SpawnBall() =>
+            _ballFactory.Create();
 
-        private void ForceBall(Ball ball)
-        {
-            ball.ForceRandom();
-        }
+        private void ForceBall() =>
+            _ballFactory.Ball.ForceRandom();
     }
 }

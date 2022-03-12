@@ -9,11 +9,12 @@ namespace Code.Infrastructure.StateMachine
 
         private IState _activeState;
         
-        public GameStateMachine()
+        public GameStateMachine(IBallFactory ballFactory)
         {
             _states = new Dictionary<Type, IState> 
             {
-                [typeof(StartGameState)] = new StartGameState(new AssetProvider())
+                [typeof(StartGameState)] = new StartGameState(ballFactory),
+                [typeof(RespawnBallState)] = new RespawnBallState(ballFactory),
             };
         }
 

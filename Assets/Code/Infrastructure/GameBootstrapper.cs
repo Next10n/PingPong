@@ -1,5 +1,6 @@
 ﻿using Code.Infrastructure.StateMachine;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Infrastructure
 {
@@ -7,6 +8,7 @@ namespace Code.Infrastructure
     {
         private IGameStateMachine _gameStateMachine;
 
+        [Inject]
         private void Construct(IGameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
@@ -14,7 +16,6 @@ namespace Code.Infrastructure
         
         private void Awake()
         {
-            _gameStateMachine = new GameStateMachine();
             _gameStateMachine.Enter<StartGameState>();
         }
     }
