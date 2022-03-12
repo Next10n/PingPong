@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Code.Progress
+﻿namespace Code.Progress
 {
     public class PlayerProgressService : IPlayerProgressService
     {
@@ -10,11 +8,5 @@ namespace Code.Progress
         {
             
         }
-    }
-
-    [Serializable]
-    public class PlayerProgress
-    {
-        
     }
 }
