@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Rasquet : MonoBehaviour
+namespace Code.Core
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Rasquet : MonoBehaviour
     {
+        public Rigidbody2D Rigidbody;
         
-    }
+        private IRasquetControlService _rasquetControlService;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void Construct(IRasquetControlService rasquetControlService)
+        {
+            _rasquetControlService = rasquetControlService;
+        }
         
+        private void Awake() =>
+            _rasquetControlService.Register(this);
+
+        public void Move(float value) =>
+            Rigidbody.velocity = new Vector2(value, 0);
     }
 }
