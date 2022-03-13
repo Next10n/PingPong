@@ -6,6 +6,7 @@ namespace Code.Infrastructure.StateMachine
     public class StartGameState : IState
     {
         private const string GameSceneName = "Game";
+        
         private readonly IGameFactory _gameFactory;
         private readonly ISceneLoader _sceneLoader;
         private readonly IPlayerProgressService _progressService;

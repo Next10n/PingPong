@@ -9,7 +9,6 @@ namespace Code.Infrastructure
         {
             SceneManager.LoadScene(scene);
             onLoaded?.Invoke();
-            
         }
     }
 }

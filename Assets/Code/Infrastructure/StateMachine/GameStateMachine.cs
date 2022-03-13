@@ -34,12 +34,5 @@ namespace Code.Infrastructure.StateMachine
             _activeState = _states[typeof(TState)];
             _activeState.Enter();
         }
-
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
-        {
-            TState payloadState = _states[typeof(TState)] as TState;
-            payloadState.Enter(payload);
-            _activeState = payloadState;
-        }
     }
 }
