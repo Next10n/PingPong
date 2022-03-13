@@ -16,6 +16,10 @@ namespace Code.Progress
         public Color Color => _color;
         
         public event Action MaxScoreUpdated;
+        public event Action ColorChanged;
+
+        public PlayerProgress() =>
+            _color = new Color(1f, 1f, 1f);
 
         public void SetMaxScore(int currentScore)
         {
@@ -23,7 +27,10 @@ namespace Code.Progress
             MaxScoreUpdated?.Invoke();
         }
 
-        public void SetColor(Color color) =>
+        public void SetColor(Color color)
+        {
             _color = color;
+            ColorChanged?.Invoke();
+        }
     }
 }

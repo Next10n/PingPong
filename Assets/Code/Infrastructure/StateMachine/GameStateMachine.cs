@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Code.Core;
 using Code.Progress;
 using Code.SaveLoad;
-using Code.Services;
 using Code.Services.Score;
 
 namespace Code.Infrastructure.StateMachine
@@ -24,7 +23,7 @@ namespace Code.Infrastructure.StateMachine
             _states = new Dictionary<Type, IState> 
             {
                 [typeof(BootstrapState)] = new BootstrapState(progressService, saveLoadService, sceneLoader),
-                [typeof(StartGameState)] = new StartGameState(gameFactory, sceneLoader),
+                [typeof(StartGameState)] = new StartGameState(gameFactory, sceneLoader, progressService),
                 [typeof(RespawnBallState)] = new RespawnBallState(gameFactory, scoreService),
                 [typeof(QuitGameState)] = new QuitGameState(saveLoadService)
             };
