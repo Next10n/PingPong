@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Code.Core.Balls
+namespace Code.Core
 {
     public class Ball : MonoBehaviour
     {
+        public SpriteRenderer SpriteRenderer;
         public Rigidbody2D Rigidbody;
         private float _moveForce = 10f;
 
@@ -12,6 +13,9 @@ namespace Code.Core.Balls
             transform.localScale = new Vector3(scale, scale, scale);
             _moveForce = moveForce;
         }
+
+        public void SetColor(Color color) =>
+            SpriteRenderer.color = color;
 
         public void ForceRandom()
         {

@@ -1,10 +1,8 @@
-using System;
-using Code.Infrastructure.StateMachine;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Services
+namespace Code.Services.Score
 {
     public class ScoreCounter : MonoBehaviour
     {

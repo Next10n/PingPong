@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Services
+namespace Code.Services.Score
 {
     public class MaxScoreView : MonoBehaviour
     {

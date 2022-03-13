@@ -1,26 +1,27 @@
 ﻿using Code.Progress;
 using Code.SaveLoad;
-using UnityEngine;
 
 namespace Code.Infrastructure.StateMachine
 {
     public class BootstrapState : IState
     {
+        private const string MenuSceneName = "Menu";
+        
         private readonly IPlayerProgressService _progressService;
         private readonly ISaveLoadService _saveLoadService;
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly ISceneLoader _sceneLoader;
 
-        public BootstrapState(IPlayerProgressService progressService, IGameStateMachine gameStateMachine, ISaveLoadService saveLoadService)
+        public BootstrapState(IPlayerProgressService progressService, ISaveLoadService saveLoadService, ISceneLoader sceneLoader)
         {
             _progressService = progressService;
-            _gameStateMachine = gameStateMachine;
             _saveLoadService = saveLoadService;
+            _sceneLoader = sceneLoader;
         }
 
         public void Enter()
         {
             LoadOrCreateProgress();
-            StartGame();
+            LoadMenu();
         }
 
         private void LoadOrCreateProgress()
@@ -30,7 +31,7 @@ namespace Code.Infrastructure.StateMachine
                 _progressService.Create();
         }
 
-        private void StartGame() =>
-            _gameStateMachine.Enter<StartGameState>();
+        private void LoadMenu() =>
+            _sceneLoader.Load(MenuSceneName);
     }
 }

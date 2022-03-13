@@ -1,7 +1,9 @@
-﻿namespace Code.Infrastructure
+﻿using System;
+
+namespace Code.Infrastructure
 {
     public interface ISceneLoader
     {
-        void Load(string scene);
+        void Load(string scene, Action onLoaded = null);
     }
 }

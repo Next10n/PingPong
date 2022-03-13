@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Services
+namespace Code.Services.Score
 {
     public interface IScoreService
     {

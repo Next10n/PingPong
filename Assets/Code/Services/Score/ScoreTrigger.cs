@@ -1,9 +1,8 @@
 using Code.Core;
-using Code.Core.Balls;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Services
+namespace Code.Services.Score
 {
     public class ScoreTrigger : MonoBehaviour
     {

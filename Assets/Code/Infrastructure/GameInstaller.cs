@@ -1,9 +1,10 @@
 using Code.AssetManagement;
-using Code.Core.Balls;
+using Code.Core;
 using Code.Infrastructure.StateMachine;
 using Code.Progress;
 using Code.SaveLoad;
 using Code.Services;
+using Code.Services.Score;
 using Zenject;
 
 namespace Code.Infrastructure
@@ -18,6 +19,7 @@ namespace Code.Infrastructure
             Container.Bind<IScoreService>().To<ScoreService>().AsSingle();
             Container.Bind<IPlayerProgressService>().To<PlayerProgressService>().AsSingle();
             Container.Bind<ISaveLoadService>().To<SaveLoadService>().AsSingle();
+            Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
         }
     }
 }

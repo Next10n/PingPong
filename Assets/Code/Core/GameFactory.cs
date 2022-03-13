@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Code.Core.Balls
+namespace Code.Core
 {
     public class GameFactory : IGameFactory
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Code.Progress;
 
-namespace Code.Services
+namespace Code.Services.Score
 {
     public class ScoreService : IScoreService
     {

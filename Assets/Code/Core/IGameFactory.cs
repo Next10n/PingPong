@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Core.Balls
+namespace Code.Core
 {
     public interface IGameFactory
     {
