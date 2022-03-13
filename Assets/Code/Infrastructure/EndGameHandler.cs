@@ -1,10 +1,10 @@
-﻿using Code.Infrastructure.StateMachine;
+using Code.Infrastructure.StateMachine;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Infrastructure
 {
-    public class GameBootstrapper : MonoBehaviour
+    public class EndGameHandler : MonoBehaviour
     {
         private IGameStateMachine _gameStateMachine;
 
@@ -13,10 +13,10 @@ namespace Code.Infrastructure
         {
             _gameStateMachine = gameStateMachine;
         }
-        
-        private void Awake()
+
+        private void OnDestroy()
         {
-            _gameStateMachine.Enter<BootstrapState>();
+            _gameStateMachine.Enter<QuitGameState>();
         }
     }
 }

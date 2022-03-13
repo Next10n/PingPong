@@ -24,7 +24,7 @@ namespace Code.Services
             _progressService.Progress.MaxScoreUpdated += ViewScore;
 
         private void OnDisable() =>
-            _progressService.Progress.MaxScoreUpdated += ViewScore;
+            _progressService.Progress.MaxScoreUpdated -= ViewScore;
 
         private void ViewScore() =>
             MaxScore.text = _progressService.Progress.MaxScore.ToString();

@@ -4,22 +4,27 @@ namespace Code.Infrastructure.StateMachine
 {
     public class StartGameState : IState
     {
-        private readonly IBallFactory _ballFactory;
+        private readonly IGameFactory _gameFactory;
 
-        public StartGameState(IBallFactory ballFactory) =>
-            _ballFactory = ballFactory;
-
-
+        public StartGameState(IGameFactory gameFactory)
+        {
+            _gameFactory = gameFactory;
+        }
+        
         public void Enter()
         {
+            CreateHud();
             SpawnBall();
             ForceBall();
         }
-        
+
+        private void CreateHud() =>
+            _gameFactory.CreateHud();
+
         private void SpawnBall() =>
-            _ballFactory.Create();
+            _gameFactory.CreateBall();
 
         private void ForceBall() =>
-            _ballFactory.Ball.ForceRandom();
+            _gameFactory.Ball.ForceRandom();
     }
 }

@@ -13,13 +13,13 @@ namespace Code.Infrastructure.StateMachine
 
         private IState _activeState;
         
-        public GameStateMachine(IBallFactory ballFactory, IScoreService scoreService, IPlayerProgressService progressService, ISaveLoadService saveLoadService)
+        public GameStateMachine(IGameFactory gameFactory, IScoreService scoreService, IPlayerProgressService progressService, ISaveLoadService saveLoadService)
         {
             _states = new Dictionary<Type, IState> 
             {
                 [typeof(BootstrapState)] = new BootstrapState(progressService, this, saveLoadService),
-                [typeof(StartGameState)] = new StartGameState(ballFactory),
-                [typeof(RespawnBallState)] = new RespawnBallState(ballFactory, scoreService),
+                [typeof(StartGameState)] = new StartGameState(gameFactory),
+                [typeof(RespawnBallState)] = new RespawnBallState(gameFactory, scoreService),
                 [typeof(QuitGameState)] = new QuitGameState(saveLoadService)
             };
         }

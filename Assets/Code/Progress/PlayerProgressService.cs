@@ -1,4 +1,6 @@
-﻿namespace Code.Progress
+﻿using UnityEngine;
+
+namespace Code.Progress
 {
     public class PlayerProgressService : IPlayerProgressService
     {
@@ -10,7 +12,11 @@
             return Progress;
         }
 
-        public void Load(PlayerProgress playerProgress) =>
+        public void Load(PlayerProgress playerProgress)
+        {
+
             Progress = playerProgress;
+            Debug.Log($"Load progress {Progress.MaxScore}");
+        }
     }
 }

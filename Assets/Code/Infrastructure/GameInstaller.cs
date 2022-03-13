@@ -13,7 +13,7 @@ namespace Code.Infrastructure
         public override void InstallBindings()
         {
             Container.Bind<IGameStateMachine>().To<GameStateMachine>().AsSingle();
-            Container.Bind<IBallFactory>().To<BallFactory>().AsSingle();
+            Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<IScoreService>().To<ScoreService>().AsSingle();
             Container.Bind<IPlayerProgressService>().To<PlayerProgressService>().AsSingle();

@@ -6,12 +6,12 @@ namespace Code.Infrastructure.StateMachine
 {
     public class RespawnBallState : IState
     {
-        private readonly IBallFactory _ballFactory;
+        private readonly IGameFactory _gameFactory;
         private readonly IScoreService _scoreService;
 
-        public RespawnBallState(IBallFactory ballFactory, IScoreService scoreService)
+        public RespawnBallState(IGameFactory gameFactory, IScoreService scoreService)
         {
-            _ballFactory = ballFactory;
+            _gameFactory = gameFactory;
             _scoreService = scoreService;
         }
 
@@ -27,13 +27,13 @@ namespace Code.Infrastructure.StateMachine
             _scoreService.Restart();
 
         private void RespawnBall() =>
-            _ballFactory.Ball.Respawn();
+            _gameFactory.Ball.Respawn();
 
         private void InitializeBall() =>
-            _ballFactory.Ball.Initialize(Random.Range(0.1f, 0.4f), Random.Range(5f, 10f));
+            _gameFactory.Ball.Initialize(Random.Range(0.1f, 0.4f), Random.Range(5f, 10f));
 
         private void ForceBall() =>
-            _ballFactory.Ball.ForceRandom();
+            _gameFactory.Ball.ForceRandom();
 
     }
 }
