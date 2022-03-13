@@ -4,9 +4,13 @@
     {
         public PlayerProgress Progress { get; private set; }
 
-        public void Load()
+        public PlayerProgress Create()
         {
-            
+            Progress = new PlayerProgress();
+            return Progress;
         }
+
+        public void Load(PlayerProgress playerProgress) =>
+            Progress = playerProgress;
     }
 }

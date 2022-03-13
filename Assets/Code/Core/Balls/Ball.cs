@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Core
+namespace Code.Core.Balls
 {
     public class Ball : MonoBehaviour
     {

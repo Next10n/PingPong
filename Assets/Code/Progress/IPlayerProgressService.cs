@@ -3,6 +3,7 @@
     public interface IPlayerProgressService
     {
         PlayerProgress Progress { get; }
-        void Load();
+        PlayerProgress Create();
+        void Load(PlayerProgress playerProgress);
     }
 }

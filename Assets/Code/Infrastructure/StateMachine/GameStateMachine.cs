@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Code.Core.Balls;
+using Code.Progress;
+using Code.SaveLoad;
 using Code.Services;
 
 namespace Code.Infrastructure.StateMachine
@@ -10,12 +13,14 @@ namespace Code.Infrastructure.StateMachine
 
         private IState _activeState;
         
-        public GameStateMachine(IBallFactory ballFactory, IScoreService scoreService)
+        public GameStateMachine(IBallFactory ballFactory, IScoreService scoreService, IPlayerProgressService progressService, ISaveLoadService saveLoadService)
         {
             _states = new Dictionary<Type, IState> 
             {
+                [typeof(BootstrapState)] = new BootstrapState(progressService, this, saveLoadService),
                 [typeof(StartGameState)] = new StartGameState(ballFactory),
                 [typeof(RespawnBallState)] = new RespawnBallState(ballFactory, scoreService),
+                [typeof(QuitGameState)] = new QuitGameState(saveLoadService)
             };
         }
 

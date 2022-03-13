@@ -1,6 +1,4 @@
-﻿using Code.Core;
-
-namespace Code.Infrastructure.StateMachine
+﻿namespace Code.Core.Balls
 {
     public interface IBallFactory
     {

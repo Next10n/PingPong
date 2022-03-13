@@ -1,54 +1,35 @@
 ﻿using Code.Progress;
+using Code.SaveLoad;
 
 namespace Code.Infrastructure.StateMachine
 {
     public class BootstrapState : IState
     {
-        private readonly IPlayerProgressService _playerProgressService;
+        private readonly IPlayerProgressService _progressService;
+        private readonly ISaveLoadService _saveLoadService;
         private readonly IGameStateMachine _gameStateMachine;
 
-        public BootstrapState(IPlayerProgressService playerProgressService, IGameStateMachine gameStateMachine)
+        public BootstrapState(IPlayerProgressService progressService, IGameStateMachine gameStateMachine, ISaveLoadService saveLoadService)
         {
-            _playerProgressService = playerProgressService;
+            _progressService = progressService;
             _gameStateMachine = gameStateMachine;
+            _saveLoadService = saveLoadService;
         }
 
         public void Enter()
         {
-            LoadProgress();
-            LoadMenu();
+            LoadOrCreateProgress();
+            StartGame();
         }
 
-        public void Exit()
+        private void LoadOrCreateProgress()
         {
+            _saveLoadService.LoadProgress();
+            if(_progressService.Progress == null)
+                _progressService.Create();
         }
 
-        private void LoadProgress()
-        {
-            _playerProgressService.Load();
-        }
-
-        private void LoadMenu()
-        {
-            // _gameStateMachine.Enter<LoadScene, string>("Menu");
-        }
-    }
-
-    public class LoadScene : IPayloadState<string>
-    {
-        public void Enter(string payload)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Enter()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Exit()
-        {
-            throw new System.NotImplementedException();
-        }
+        private void StartGame() =>
+            _gameStateMachine.Enter<StartGameState>();
     }
 }

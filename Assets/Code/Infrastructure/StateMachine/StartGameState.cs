@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using Code.Core.Balls;
 
 namespace Code.Infrastructure.StateMachine
 {
@@ -15,11 +15,7 @@ namespace Code.Infrastructure.StateMachine
             SpawnBall();
             ForceBall();
         }
-
-        public void Exit()
-        {
-        }
-
+        
         private void SpawnBall() =>
             _ballFactory.Create();
 

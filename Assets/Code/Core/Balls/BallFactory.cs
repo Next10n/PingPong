@@ -1,7 +1,7 @@
-﻿using Code.Core;
+﻿using Code.AssetManagement;
 using UnityEngine;
 
-namespace Code.Infrastructure.StateMachine
+namespace Code.Core.Balls
 {
     public class BallFactory : IBallFactory
     {
